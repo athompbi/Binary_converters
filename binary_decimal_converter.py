@@ -1,6 +1,8 @@
-#### given a binary number, convert to a decimal
-
 def binary_to_decimal(binary):
+    """Converts a binary number to a decimal
+    
+    Return:
+        decimal: converted number"""
 
     binary = str(binary)
     decimal = 0
@@ -9,7 +11,6 @@ def binary_to_decimal(binary):
     multiple = 0
 
     for i in binary:
-
         if binary[index] == '1':
             decimal += 2 ** multiple
         index -= 1
@@ -18,43 +19,33 @@ def binary_to_decimal(binary):
     return decimal
 
 
-### given a decimal number, convert to binary
-
-### find how many bits are needed to create the number
-
-print(binary_to_decimal(11011))
 
 
-# import math
+import math
 
-# decimal = 5
+def decimal_to_binary(decimal):
+    """Converts a number in decimal to a binary number
+    
+    Return:
+        binary: converted number"""
 
-# binary = []
+    bits_needed = int(math.log(decimal,2) + 1)
 
-# bits_needed = int(math.log(decimal,2) + 1)
+    binary = []
 
-# for i in range(bits_needed):
-#     binary.append(0)
+    for i in range(bits_needed - 1, -1, -1):
+        if decimal >= 2 ** i:
+            binary.append('1')
+            decimal -= 2 ** i
+        else:
+            binary.append('0')
 
-# print(binary)
+    binary = ''.join(binary)
 
-# for i in binary:
-#     mult = bits_needed - 1
-#     print(f'i = {i}')
-#     print(f'mult = {mult}')
-#     print(f'2^mult = {2 ** mult}')
-#     print(f'remaining decimal = {decimal}')
+    return binary
 
-#     if 2 ** mult <= decimal:
-#         decimal -= 2 ** (bits_needed - 1)
-#         binary[i] = 1
-#         print(binary[i])
-#         bits_needed -= 1
-#     else:
-#         bits_needed -= 1
-#         print(binary[i])
 
-# print(binary)
+
 
 """
 1 = 1
